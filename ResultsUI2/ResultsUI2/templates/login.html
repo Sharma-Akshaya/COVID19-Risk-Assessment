@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani|Roboto&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+    </head>
+
+    <body id=wrapper>
+        <div id="page">
+            <div id="bar"></div>
+            <div id="pageHeader">
+                <h1>Covid Risk Assessment</h1>                
+            </div>            
+            <div id="pageContent" > 
+                <div id="box">                                          
+                    <form name="login" action="/dashboard" method="POST" enctype="multipart/form-data">
+                        <input type="text" name="emailid" value="Email id" onblur="this.value = !this.value ? 'Email id' : this.value;" onfocus="this.select()" onclick="this.value = '';">
+                        <input type="password" name="password" value="Password" onblur="this.value = !this.value ? 'Password' : this.value;" onfocus="this.select()" onclick="this.value = '';">
+
+                        <input type="submit" name="btn" value="Login" id="submit" onClick="check()">
+                    </form>
+                    <div>
+                        <p>New user? Click <a href="{{ url_for('register') }}">here</a> to Sign up.</p>
+                        <br>
+                    </div>
+                </div>  
+            </div> 
+        </div>
+    </body> 
+
+</html>
+

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani|Roboto&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+        <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+  
+    <body id=wrapper>
+        <div id="page">
+            <div id="bar"></div>
+            <div id="pageHeader">
+                <h1>Covid Risk Assessment</h1>                
+            </div>            
+            <div id="pageContent" >
+                <br>
+                <br>
+                <div id="chart">
+                    <!-- <center> -->
+                        <!-- PIE GRAPH -->
+                        <div id="pie"></div>
+                        <!-- SCATTER
+                        <div id="scatter"></div> -->
+                        <script>
+                            var x1 =JSON.parse('{{x1}}')
+                            //document.getElementById("demo").innerHTML = x;
+                            var y1='{{y1|tojson|safe}}'
+                            y1=JSON.parse(y1)
+                            //document.getElementById("demo").innerHTML = y;
+                        
+                            var piedata = [{
+                                values: x1,
+                                labels: y1,
+                                type: 'pie',
+                                marker: 
+                                    {
+                                        colors: ['rgb(56, 75, 126)', 'rgb(18, 36, 37)', 'rgb(34, 53, 101)', 'rgb(36, 55, 57)', 'rgb(6, 4, 4)']
+                                    }
+                                }];
+                            var layout = {
+                                height: 500,
+                                width: 500
+                            };
+                            Plotly.newPlot('pie', piedata, layout);
+                        
+                        </script>
+                        <!-- </center> -->
+                </div>
+                
+                <div id="scroll">
+                    <table id="tabledashboard">
+                        <thead>
+                            <tr>
+                                <th id="High">High Risk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in value1 %}
+                            <tr>
+                                <td>{{row["FIRSTNAME"]}} {{row["LASTNAME"]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div id="scroll">
+                    <table id="tabledashboard">
+                        <thead>
+                            <tr>
+                                <th id="Medium">Medium Risk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in value2 %}
+                            <tr>
+                                <td>{{row["FIRSTNAME"]}} {{row["LASTNAME"]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div id="scroll">
+                    <table id="tabledashboard">
+                        <thead>
+                            <tr>
+                                <th id="Low">Low Risk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in value3 %}
+                            <tr>
+                                <td>{{row["FIRSTNAME"]}} {{row["LASTNAME"]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div id="pageContent2">
+                <!-- <div class="timeline">
+                    <div class="container right">
+                      <div class="content">
+                        <p>X is at High risk</p>
+                      </div>
+                    </div>
+                    <div class="container right">
+                      <div class="content">
+                        <p>X is at High risk</p>
+                    </div>
+                  </div>
+                </div> -->
+                <br>
+                <div class="alert">
+                    <h3>Alerts</h1>
+                    <p>Korey Casol's risk just increased from Low to Medium.</p>
+                    <p>Jody Tribe's risk just increased from Medium to High.</p>
+
+                </div>
+
+                <div id="patientData">
+                    <table id="patient">
+                        <thead>
+                            <tr>
+                                <th id="ListofPatients">List of Patients:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in value1 %}
+                            <tr>
+                                <td><a href="{{ url_for('patient') }}">{{row["FIRSTNAME"]}} {{row["LASTNAME"]}}</a></td>
+                            </tr>
+                            {% endfor %}
+                            {% for row in value2 %}
+                            <tr>
+                                <td><a href="{{ url_for('patient') }}">{{row["FIRSTNAME"]}} {{row["LASTNAME"]}}</a></td>
+                            </tr>
+                            {% endfor %}
+                            {% for row in value3 %}
+                            <tr>
+                                <td><a href="{{ url_for('patient') }}">{{row["FIRSTNAME"]}} {{row["LASTNAME"]}}</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div>
+    </body> 
+
+</html>
+

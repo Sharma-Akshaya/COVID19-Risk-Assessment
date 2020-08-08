@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<script>
+    function check()
+    {
+        if (register.name.value == "Name")
+            alert('Name is required');
+        else if (register.address.value == "Address")
+            alert('address is required');
+        else if (register.contactno.value == "Contact Number")
+            alert('Contact Number is required');
+        else if (register.emailid.value == "Email id")
+            alert('Id is required');
+        else if (register.password.value == "Password")
+            alert('Password is required');
+        break;
+    }
+</script>
+
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani|Roboto&display=swap" rel="stylesheet">
+    
+    </head>
+
+    <body id=wrapper>
+        <div id="page">
+            <div id="bar"></div>
+            <div id="pageHeader">
+                <h1>Application name</h1>                
+            </div>            
+            <div id="pageContent" > 
+                <div id="box">                                            
+                    <form name="register" action="/login">
+                        <input type="text" name="name" value="Name" onblur="this.value = !this.value ? 'Name' : this.value;" onfocus="this.select()" onclick="this.value = '';">
+                        <input type="text" name="address" value="Address" onblur="this.value = !this.value ? 'Address' : this.value;" onfocus="this.select()" onclick="this.value = '';">
+                        <input type="text" name="contactno" value="Contact Number" onblur="this.value = !this.value ? 'Contact Number' : this.value;" onfocus="this.select()" onclick="this.value = '';">
+                        <input type="text" name="emailid" value="Email id" onblur="this.value = !this.value ? 'Email id' : this.value;" onfocus="this.select()" onclick="this.value = '';">
+                        <input type="password" name="password" value="Password" onblur="this.value = !this.value ? 'Password' : this.value;" onfocus="this.select()" onclick="this.value = '';">
+
+                        <input type="submit" name="btn" value="Register" id="submit" onClick="check()">
+                    </form>
+                    <div>
+                        <p>Already registered? Click <a href="{{ url_for('login') }}">here</a> to Login.</p>
+                        <br>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </body> 
+
+</html>
+

@@ -1,0 +1,6 @@
+framework module Pods_COVID_Risk_Assessment {
+  umbrella header "Pods-COVID Risk Assessment-umbrella.h"
+
+  export *
+  module * { export * }
+}

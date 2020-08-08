@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <title>Patient</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani|Roboto&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+    </head>
+
+    <body id=wrapper>
+        <div id="page">
+            <div id="bar"></div>
+            <div id="pageHeader">
+                <h1>Covid Risk Assessment</h1>                
+            </div>            
+            <div id="pageContent" > 
+                <h2>Patient Details</h2>                                            
+                <table id="patientbox">
+                    {% for row in value %}
+                    <tr>
+                        <td>First Name<br>{{row[0]}}</td>
+                        <td>Last Name<br>{{row[1]}}</td>
+                    </tr>
+                    <tr><td colspan='2'></td></tr>
+                    <tr><td colspan='2'></td></tr>
+                    <tr>
+                        <td>Date of Birth<br>{{row[2]}}</td>
+                        <td>Gender<br>{{row[3]}}</td>
+                    </tr>
+                    <tr><td colspan='2'></td></tr>
+                    <tr><td colspan='2'></td></tr>
+                    <tr>
+                        <td>Age<br>{{row[4]}}</td>
+                        <td>Risk Percentage<br>{{row[5]}}</td>
+                    </tr> 
+                    <tr><td colspan='2'></td></tr>
+                    <tr><td colspan='2'></td></tr>
+                    <tr>
+                        <td>Existing Medical Conditions</td>
+                        <td>{{row[6]}}</td>
+                    </tr> 
+                    <tr><td colspan='2'></td></tr>
+                    <tr><td colspan='2'></td></tr>
+                    <tr>
+                        <td>Current Symptons</td>
+                        <td>{{row[7]}}</td>
+                    </tr> 
+                    {% endfor %}
+            </div> 
+        </div>
+    </body> 
+
+</html>
+
